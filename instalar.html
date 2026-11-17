@@ -138,15 +138,20 @@
   if (doLink) { $('cod').value = doLink; usar(doLink); }
 
   $('criar').addEventListener('click', function () {
-    if (codigo && !confirm('Você já tem o código ' + codigo + ' nesta página. Criar OUTRO espaço novo, vazio?\n\nSe você já usa o ARK, não crie outro: use o seu código.')) return;
+    if (codigo && !confirm('Você já tem o código ' + codigo + ' nesta página. Criar OUTRO espaço novo (com os exemplos do modelo)?\n\nSe você já usa o ARK, não crie outro: use o seu código.')) return;
     var b = this; b.disabled = true; msg('Criando seu espaço...');
     fetch('https://www.npoint.io/documents/' + MODELO + '/clone', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (d) {
         var id = idNpoint(d && d.token); if (!id) throw new Error('sem código');
-        // Começa limpo: nada do modelo (que é público) vai para o espaço novo.
-        return fetch('https://api.npoint.io/' + id, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ perfil: {}, comandos: {} }) })
-          .then(function (w) { if (!w.ok) throw new Error('limpar: HTTP ' + w.status); $('cod').value = id; usar(id); });
+        // O espaço novo vem com os exemplos do modelo; só o nome do atendente (de cada um) fica em branco.
+        var API = 'https://api.npoint.io/' + id;
+        return fetch(API, { cache: 'no-store' }).then(function (g) { return g.ok ? g.json() : null; }).then(function (bin) {
+          if (bin && bin.perfil && bin.perfil.atendente) {
+            bin.perfil.atendente = '';
+            return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(bin) });
+          }
+        }).catch(function () { /* os exemplos ficam como vieram */ }).then(function () { $('cod').value = id; usar(id); });
       })
       .catch(function (e) { msg('Não consegui criar agora (' + e.message + '). Tente de novo em instantes.'); })
       .then(function () { b.disabled = false; });
