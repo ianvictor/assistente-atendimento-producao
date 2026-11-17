@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instalar o ARK</title>
+<style>
+  :root{--bg:#0b1220;--card:#111827;--borda:#273244;--txt:#f3f4f6;--sub:#9ca3af;--azul:#2563eb;--verm:#f0222e;--ok:#16a34a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:40px 16px 64px}
+  header{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+  header svg{height:40px;width:auto;color:#fff}
+  h1{font-size:28px;margin:0}
+  .lead{color:var(--sub);margin:4px 0 32px}
+  .passo{background:var(--card);border:1px solid var(--borda);border-radius:14px;padding:20px 22px;margin-bottom:16px;display:grid;grid-template-columns:44px 1fr;gap:16px}
+  .num{width:44px;height:44px;border-radius:50%;background:var(--azul);display:grid;place-items:center;font-weight:700;font-size:20px}
+  .passo h2{font-size:18px;margin:8px 0 6px}
+  .passo p{margin:0 0 10px;color:#d1d5db}
+  kbd{background:#1f2937;border:1px solid #4b5563;border-bottom-width:3px;border-radius:6px;padding:1px 7px;font:600 14px ui-monospace,monospace;color:#fff}
+  .barra{display:flex;align-items:center;gap:8px;background:#e5e7eb;color:#111;border-radius:8px;padding:6px 10px;font-size:13px;margin:10px 0 4px;min-height:34px}
+  .barra .fav{background:#fff;border:1px solid #cbd5e1;border-radius:6px;padding:2px 8px}
+  .barra .seta{color:var(--azul);font-weight:700}
+  .botoes{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 6px}
+  a.arrastar{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:12px;background:var(--azul);color:#fff;
+    font-weight:700;font-size:17px;text-decoration:none;cursor:grab;border:2px dashed rgba(255,255,255,.5);user-select:none}
+  a.arrastar.revan{background:#7c3aed}
+  a.arrastar:active{cursor:grabbing}
+  a.arrastar::before{content:'✋';font-size:20px} /* fora do texto: o nome do favorito fica só "ARK ..." */
+  .dica{font-size:14px;color:var(--sub)}
+  .aviso{display:none;margin-top:10px;background:#7c2d12;border-radius:8px;padding:10px 12px;font-size:14px}
+  details{margin-top:10px;font-size:14px;color:var(--sub)}
+  details summary{cursor:pointer}
+  details button{margin:8px 8px 0 0;background:#1f2937;color:#fff;border:1px solid #4b5563;border-radius:8px;padding:6px 12px;cursor:pointer;font:inherit}
+  .ok{color:#86efac}
+  footer{color:var(--sub);font-size:13px;margin-top:28px;text-align:center}
+  @media (max-width:520px){.passo{grid-template-columns:1fr}.num{width:36px;height:36px;font-size:17px}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg viewBox="0 0 620 330" aria-label="ARK"><polygon fill="#f0222e" points="18,322 72,322 142,148 114,92"/><g fill="currentColor"><polygon points="128,8 196,8 300,322 236,322"/><path d="M196,8H318A86,86 0 0 1 318,180H262L245,128H310A34,34 0 0 0 310,60H213Z"/><polygon points="276,170 338,170 400,322 334,322"/><rect x="412" y="8" width="64" height="314"/><polygon points="476,150 476,226 600,8 524,8"/><polygon points="505,175 552,128 620,322 548,322"/></g></svg>
+    <h1>Instalar o ARK</h1>
+  </header>
+  <p class="lead">Três passos, menos de um minuto. Não precisa copiar nem editar nada.</p>
+
+  <section class="passo">
+    <div class="num">1</div>
+    <div>
+      <h2>Mostre a barra de favoritos</h2>
+      <p>Se a barra de favoritos do Chrome não aparece embaixo do endereço, aperte <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>B</kbd>.</p>
+      <div class="barra"><span class="fav">⭐ Favorito</span><span class="fav">⭐ Outro</span><span class="seta">← é esta barra</span></div>
+    </div>
+  </section>
+
+  <section class="passo">
+    <div class="num">2</div>
+    <div>
+      <h2>Arraste os dois botões para a barra</h2>
+      <p>Clique, segure e solte cada botão em cima da barra de favoritos.</p>
+      <div class="botoes">
+        <a class="arrastar" id="fav-genesys" title="Arraste para a barra de favoritos">ARK Genesys</a>
+        <a class="arrastar revan" id="fav-revan" title="Arraste para a barra de favoritos">ARK Revan</a>
+      </div>
+      <div class="dica">Eles são iguais para toda a equipe. Não clique: arraste.</div>
+      <div class="aviso" id="aviso">Esse botão não funciona aqui: <b>arraste</b> ele até a barra de favoritos.</div>
+      <details>
+        <summary>Não consigo arrastar</summary>
+        <p>Copie o favorito, clique com o botão direito na barra de favoritos → <b>Adicionar página</b>, dê o nome e cole no campo <b>URL</b>.</p>
+        <button type="button" data-copiar="genesys">Copiar favorito do Genesys</button>
+        <button type="button" data-copiar="revan">Copiar favorito do Revan</button>
+        <span class="ok" id="copiado"></span>
+      </details>
+    </div>
+  </section>
+
+  <section class="passo">
+    <div class="num">3</div>
+    <div>
+      <h2>Abra o Genesys e clique em ARK Genesys</h2>
+      <p>Na primeira vez aparece <b>Bem-vindo ao ARK</b>. Clique em <b>Criar meu espaço</b> e pronto: seus textos e ajustes ficam guardados.</p>
+      <p>Já usava o assistente? Clique em <b>Já tenho um código</b> e cole o seu código do npoint.</p>
+      <p>No Revan, o <b>ARK Revan</b> se liga sozinho ao Genesys quando você envia um atendimento.</p>
+    </div>
+  </section>
+
+  <footer>ARK · Assistente de Atendimento</footer>
+</main>
+<script>
+  var BASE = 'https://ianvictor.github.io/assistente-atendimento-producao/';
+  function favorito(arquivo) {
+    return "javascript:(function(){var s=document.createElement('script');s.src='" + BASE + arquivo + "?v='+Date.now();document.body.appendChild(s);})()";
+  }
+  var codigos = { genesys: favorito('assistente.js'), revan: favorito('revan.js') };
+  document.getElementById('fav-genesys').href = codigos.genesys;
+  document.getElementById('fav-revan').href = codigos.revan;
+  // Clicar aqui não faz sentido (o favorito roda no Genesys/Revan): só mostra o aviso.
+  document.querySelectorAll('a.arrastar').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      var av = document.getElementById('aviso');
+      av.style.display = 'block';
+      clearTimeout(a._t); a._t = setTimeout(function () { av.style.display = 'none'; }, 5000);
+    });
+  });
+  document.querySelectorAll('[data-copiar]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = codigos[b.getAttribute('data-copiar')];
+      var fim = function (ok) { document.getElementById('copiado').textContent = ok ? 'Copiado!' : 'Não consegui copiar.'; };
+      if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { fim(true); }, function () { fim(false); });
+      else fim(false);
+    });
+  });
+</script>
+</body>
+</html>
