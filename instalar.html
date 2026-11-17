@@ -117,7 +117,7 @@
   var MODELO = 'e5f1fac3afdba67c0fdc';
   var codigo = '';
   var $ = function (id) { return document.getElementById(id); };
-  function idNpoint(v) { var m = String(v || '').trim().match(/([a-z0-9]{12,})\/?$/i); return m ? m[1] : ''; }
+  function idNpoint(v) { var m = String(v || '').trim().match(/([a-z0-9]{12,})\/?$/i); return m && m[1] !== MODELO ? m[1] : ''; }
   function favorito(arquivo) {
     return "javascript:(function(){window.AA_NPOINT='" + codigo + "';var s=document.createElement('script');s.src='" + BASE + arquivo + "?v='+Date.now();document.body.appendChild(s);})()";
   }
@@ -138,16 +138,22 @@
   if (doLink) { $('cod').value = doLink; usar(doLink); }
 
   $('criar').addEventListener('click', function () {
+    if (codigo && !confirm('Você já tem o código ' + codigo + ' nesta página. Criar OUTRO espaço novo, vazio?\n\nSe você já usa o ARK, não crie outro: use o seu código.')) return;
     var b = this; b.disabled = true; msg('Criando seu espaço...');
     fetch('https://www.npoint.io/documents/' + MODELO + '/clone', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(function (d) { var id = idNpoint(d && d.token); if (!id) throw new Error('sem código'); $('cod').value = id; usar(id); })
+      .then(function (d) {
+        var id = idNpoint(d && d.token); if (!id) throw new Error('sem código');
+        // Começa limpo: nada do modelo (que é público) vai para o espaço novo.
+        return fetch('https://api.npoint.io/' + id, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ perfil: {}, comandos: {} }) })
+          .then(function (w) { if (!w.ok) throw new Error('limpar: HTTP ' + w.status); $('cod').value = id; usar(id); });
+      })
       .catch(function (e) { msg('Não consegui criar agora (' + e.message + '). Tente de novo em instantes.'); })
       .then(function () { b.disabled = false; });
   });
   $('usar').addEventListener('click', function () {
     var id = idNpoint($('cod').value);
-    if (!id) { msg('Não reconheci esse código. Ele tem letras e números, como 753a29c5257efcc2d9c1.'); return; }
+    if (!id) { msg(/e5f1fac3afdba67c0fdc/.test($('cod').value) ? 'Esse é o código do modelo, não o seu. Clique em Criar meu espaço.' : 'Não reconheci esse código. Ele tem letras e números, como 753a29c5257efcc2d9c1.'); return; }
     usar(id);
   });
   $('cod').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('usar').click(); });
