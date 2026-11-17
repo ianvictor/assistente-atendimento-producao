@@ -144,14 +144,14 @@
       .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(function (d) {
         var id = idNpoint(d && d.token); if (!id) throw new Error('sem código');
-        // O espaço novo vem com os exemplos do modelo; só o nome do atendente (de cada um) fica em branco.
-        var API = 'https://api.npoint.io/' + id;
-        return fetch(API, { cache: 'no-store' }).then(function (g) { return g.ok ? g.json() : null; }).then(function (bin) {
-          if (bin && bin.perfil && bin.perfil.atendente) {
-            bin.perfil.atendente = '';
-            return fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(bin) });
-          }
-        }).catch(function () { /* os exemplos ficam como vieram */ }).then(function () { $('cod').value = id; usar(id); });
+        // O conteúdo vem só do modelo.json publicado aqui no GitHub (o modelo do npoint é público e pode ser alterado).
+        return fetch('modelo.json', { cache: 'no-store' })
+          .then(function (m) { if (!m.ok) throw new Error('modelo: HTTP ' + m.status); return m.json(); })
+          .then(function (modelo) {
+            modelo.perfil = modelo.perfil || {}; modelo.perfil.atendente = '';
+            return fetch('https://api.npoint.io/' + id, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(modelo) });
+          })
+          .then(function (w) { if (!w.ok) throw new Error('gravar exemplos: HTTP ' + w.status); $('cod').value = id; usar(id); });
       })
       .catch(function (e) { msg('Não consegui criar agora (' + e.message + '). Tente de novo em instantes.'); })
       .then(function () { b.disabled = false; });

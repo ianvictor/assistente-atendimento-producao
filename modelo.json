@@ -1,0 +1,324 @@
+{
+  "perfil": {
+    "transfFilas": [
+      {
+        "c": "Transferencia para o SAC 5G",
+        "k": 1,
+        "n": "MULTISKILL 5G ATIVO DIGITAL"
+      },
+      {
+        "c": "Transferencia para o SAC 5G",
+        "k": 5,
+        "n": "SUPORTE TÉCNICO 5G DIGITAL"
+      },
+      {
+        "c": "Transferencia para o SAC",
+        "k": 1,
+        "n": "SAC DIGITAL"
+      },
+      {
+        "c": "Transferencia para o SAC",
+        "k": 2,
+        "n": "SAC"
+      },
+      {
+        "c": "Transferencia para o Cobranca",
+        "k": 2,
+        "n": "COBRANCA"
+      },
+      {
+        "c": "Duvidas sobre cancelamento",
+        "k": 4,
+        "n": "RETENCAO"
+      }
+    ],
+    "tabFavoritos": [
+      {
+        "c": 2,
+        "e": "m",
+        "l": 2,
+        "t": "Finalizado por inatividade"
+      },
+      {
+        "c": 4,
+        "e": "d",
+        "l": 2,
+        "t": "Rota inoperante - FTTH"
+      },
+      {
+        "c": 1,
+        "e": "d",
+        "l": 2,
+        "t": "Lentidao geral em todos dispositivo WI-FI - FTTH"
+      },
+      {
+        "c": 4,
+        "e": "d",
+        "l": 2,
+        "t": "LOS - FTTH"
+      },
+      {
+        "c": 1,
+        "e": "d",
+        "l": 2,
+        "t": "Dispositivo Conectado, mas sem Internet - FTTH"
+      },
+      {
+        "c": 3,
+        "e": "d",
+        "l": 2,
+        "t": "Roteador sem gerencia - FTTH"
+      },
+      {
+        "c": 0,
+        "e": "d",
+        "l": 2,
+        "t": "Telefonia desativada - Fixo"
+      },
+      {
+        "c": 5,
+        "e": "d",
+        "l": 2,
+        "t": "Plano nao chega ao contratado - FTTH"
+      },
+      {
+        "c": 0,
+        "e": "d",
+        "l": 1,
+        "t": "Cobranca de reparo (dentro do prazo) - FTTH"
+      }
+    ],
+    "timerRapidos": [
+      160
+    ],
+    "transfCodigo": "",
+    "cmdFavs": [],
+    "atendente": ""
+  },
+  "comandos": {
+    "\\1": {
+      "texto": "Olá, tudo bem? Me chamo {atendente}, sou do suporte técnico da Brisanet, e estou aqui para te ajudar.",
+      "titulo": "apresentação",
+      "categoria": "inicio"
+    },
+    "\\2": {
+      "texto": "Falo com o(a) titular do contrato? Caso não, informe-me o seu nome e o grau de parentesco, por gentileza. 😊😊",
+      "titulo": "Titular?",
+      "categoria": "inicio"
+    },
+    "\\3": {
+      "texto": "Peço somente que me informe os dados abaixo para que eu identifique o cadastro e possamos continuar o atendimento, por gentileza. 💛💛\n\nNome completo do(a) titular:\nData de nascimento:\nRua:\nNúmero da residência:\nBairro:",
+      "titulo": "Confirmar Dados",
+      "categoria": "inicio"
+    },
+    "\\4": {
+      "texto": "Grato pelas informações. No que posso ajudar, por gentileza? 🥰",
+      "titulo": "Confirmou os dados",
+      "categoria": "inicio"
+    },
+    "\\5": {
+      "texto": "Olá! Você ainda está aí? 👀 ",
+      "categoria": "inicio"
+    },
+    "\\6": {
+      "texto": "Em qual período do dia você está disponível para receber nossa equipe? Hoje pela manhã ou pela tarde?",
+      "categoria": "externo"
+    },
+    "\\7": {
+      "texto": "Dessa forma, no momento, ficou alguma dúvida ou ajudo em algo mais? 💜💜",
+      "titulo": "Ajudou com algo mais?",
+      "categoria": "inicio"
+    },
+    "\\8": {
+      "texto": "Se gostou do meu atendimento, por favor, avalie no final, é rápido e me ajudará muito no meu trabalho. Foi um prazer te atender. Fica com Deus. 💜💜",
+      "titulo": "Finalização 1",
+      "categoria": "inicio"
+    },
+    "\\9": {
+      "texto": "Espero que você tenha um excelente dia e uma ótima semana. 💜💜",
+      "titulo": "Finalização 2",
+      "categoria": "inicio"
+    },
+    "\\ext": {
+      "texto": "Verifiquei aqui em sistema que possui um possível rompimento de fibra, com isso irei encaminhar um técnico no local, o atendimento ficou pré-agendado para *AMANHÃ* pela *MANHÃ*, caso haja uma brecha, você pode ser atendido antes, não se preocupe você receberá uma ligação do nosso departamento de agendamento repassando o dia e horário da visita.",
+      "categoria": "externo"
+    },
+    "\\poxa": {
+      "texto": "Poxa! Estou encerrando esse atendimento por inatividade. Sua avaliação é muito importante para o meu trabalho, são apenas 2 perguntas rápidas, fique à vontade! Lembrando que você tem 10 minutos. 🧡💙",
+      "titulo": "Poxa!",
+      "categoria": "inicio"
+    },
+    "\\rota": {
+      "texto": "Obrigado por aguardar! Verifiquei no sistema que você está sem acesso porque a rota no qual você é conectado(a) está inoperante por conta de um rompimento de fibra. Para facilitar o entendimento, quando uma rota fica inoperante, todos os clientes conectados nessa mesma rota ficam sem acesso. Além disso, como se trata de um problema geral na rede, temos sempre um prazo inicial de 24 a 72 horas para que o serviço seja normalizado.",
+      "titulo": "Rota inoperante Dentro do prazo",
+      "categoria": "ROTA"
+    },
+    "#jyaempdn": {
+      "texto": "Quando você coloca ele no ouvido, faz algum barulho? Ou totalmente mudo?",
+      "titulo": "fixo (faz barulho?)",
+      "categoria": "fixo"
+    },
+    "#un20qy1v": {
+      "texto": "Irei realizar uma reconfiguração geral na sua rede para normalizar o acesso à conexão pode cair por alguns minutos, mas será restabelecida rapidamente.\n\n",
+      "titulo": "lentidão 1 (Configuração)",
+      "categoria": "lentidão"
+    }
+  },
+  "protocolos": {
+    "/z": {
+      "texto": "Não informou os dados para atendimento. Entrou em contato via chat. Ao iniciar o atendimento, o mesmo não correspondeu ao diálogo. Não foi feita sondagem. Atendimento encerrado por inatividade.",
+      "titulo": "inatividade",
+      "etiquetas": [
+        "Inatividade Chat"
+      ]
+    },
+    "/fx": {
+      "texto": "O cliente informa que o telefone não efetua nem recebe ligações, consultado porta FX, a mesma desativada Ativado sua ONU e telefonia.",
+      "titulo": "Porta FX desativada",
+      "etiquetas": [
+        "Telefonia Desativada"
+      ]
+    },
+    "/los": {
+      "texto": "Sem acesso. Identificado cliente sem sinal, led LOS ativa, cliente informa sem acesso. Aberto O.S. para ser verificado. Cliente solicita contato prévio. \n",
+      "titulo": "LOS",
+      "externo": {
+        "servico": "Reparo Físico",
+        "problemas": [
+          "Suspeita de LOS (reparo físico)"
+        ]
+      },
+      "etiquetas": [
+        "Suspeita de LOS"
+      ]
+    },
+    "/sem": {
+      "texto": "Entrou em contato informando estar sem acesso, visto sinal e rota normais, efetuado procedimento de reconfiguração da ONU, trocados canais, reiniciado e ativado roteador, informado ao cliente para realizar um teste e verificar. Após isso acesso normalizado. Porém, todos os indicadores de sinal normais.",
+      "titulo": "Sem Acesso",
+      "etiquetas": [
+        "Sem acesso"
+      ]
+    },
+    "/tpe": {
+      "texto": "Cliente entrou em contato sem acesso no dia. Cliente com sinal, rota normal, identificado seu TP-Link sem gerência. Verificado os cabos e portas LAN, solicitado informações sobre LED do equipamento. Reconfigurado seu equipamento, solicitado reset manual. Cliente informa sem acesso, aberto O.S para verificar.",
+      "titulo": "Sem gerencia",
+      "externo": {
+        "servico": "Reparo Rápido",
+        "problemas": [
+          "Sem acesso TP-LINK (reparo rápido)"
+        ]
+      },
+      "etiquetas": [
+        "Sem acesso TP-LINK"
+      ]
+    },
+    "/caiu": {
+      "texto": "Ligação caiu, Realizado retorno sem sucesso.",
+      "titulo": "Ligação caiu",
+      "etiquetas": [
+        "Ligação caiu"
+      ]
+    },
+    "/lent": {
+      "texto": "Entrou em contato informando instabilidade no acesso, Tudo se encontra como o recomendado pela equipe. Reconfigurado equipamento, alterado os canais e largura de banda, cliente informa acesso normalizado.",
+      "titulo": "Lentidão",
+      "etiquetas": [
+        "Lentidão - FTTH"
+      ]
+    },
+    "/mudo": {
+      "texto": "O cliente informa que o telefone não efetua nem recebe ligações, consultado porta FX, a mesma normal, cliente informa telefone mudo, aberto O.S para ser verificado.",
+      "titulo": "Telefone Mudo (Externo)",
+      "externo": {
+        "servico": "Reparo Rápido",
+        "problemas": [
+          "Telefone mudo (reparo rápido)"
+        ]
+      },
+      "etiquetas": [
+        "Telefone mudo"
+      ]
+    },
+    "/ostp": {
+      "texto": "Cliente entrou em contato sem acesso no dia. Cliente com sinal, rota normal, identificado seu TP-Link sem gerência. Verificado os cabos e portas LAN, solicitado informações sobre LED do equipamento. Reconfigurado seu equipamento, solicitado reset manual. Cliente informa acesso sem acesso, aberto O.S para verificar.",
+      "titulo": "O.S Sem Gerencia",
+      "externo": {
+        "servico": "Reparo Rápido",
+        "problemas": [
+          "Sem acesso TP-LINK (reparo rápido)"
+        ]
+      },
+      "etiquetas": [
+        "Sem acesso TP-LINK"
+      ]
+    },
+    "/rotad": {
+      "texto": "Sem acesso, rota inoperante. Passado prazo conforme o Saski, cliente ciente.\n",
+      "titulo": "Rota inoperante",
+      "etiquetas": [
+        "Rota Inoperante - FTTH"
+      ]
+    },
+    "/rotaf": {
+      "texto": "Sem acesso, Rota inoperante fora do prazo. Passado prazo de acordo com o saski, cliente ciente.",
+      "titulo": "Rota inoperante Fora",
+      "etiquetas": [
+        "Rota Inoperante - FTTH"
+      ]
+    },
+    "/sinal": {
+      "texto": "Cliente entrou em contato e informou estar com quedas em sua internet, verificado o sinal remoto da ONU a mesma estava alto considerando-se um sinal irregular após verificação da rota. Por gentileza, passar no local para verificação. Cliente ciente do prazo.",
+      "titulo": "Sinal irregular",
+      "externo": {
+        "servico": "Reparo Físico",
+        "problemas": [
+          "Sinal Irregular Fibra (reparo físico)"
+        ]
+      },
+      "etiquetas": [
+        "Sinal da fibra do cliente irregular - FTTH"
+      ]
+    },
+    "/oslent": {
+      "texto": "Entrou em contato informando instabilidade no acesso no dia. Tudo se encontra como o recomendo pela equipe. Reconfigurado equipamento, alterado os canais e largura de banda, cliente informa que persiste o problema a título de satisfação do cliente será aberto O.S. para verificar, realizar todos os testes de velocidade e de conexão e deixar anexado fotos no protocolo.",
+      "titulo": "OS lentidão",
+      "externo": {
+        "servico": "Reparo Rápido",
+        "problemas": [
+          "Lentidão (reparo rápido)"
+        ]
+      },
+      "etiquetas": [
+        "Lentidão - FTTH"
+      ]
+    },
+    "#y7txsmu3": {
+      "texto": "Cliente ao entrar em contato solicitou informações sobre configuração estruturada. Passada as seguintes informações: Valor R$ 90,00 Reais na próxima faturas EM 3X, 20M de cabo RJ45 gratuito para configurar e conectar dispositivos na rede do cliente. Ciente, desistiu após saber da cobrança do serviço. Cliente após alguns minutos em linha desligou a ligação. ",
+      "titulo": "Configuracao de rede interna",
+      "etiquetas": [
+        "Configuração Estruturada de Rede Interna"
+      ]
+    },
+    "/onusinal": {
+      "texto": "Entrou em contato informando equipamento não apresentar nenhuma LED acesa, visto rota normal. Cliente sem sinal, verificado tomada, testado em uma extensão, verificado se botão power disparou, após todos os procedimentos, ONU apresentou sinal, acendendo as LEDs, acesso normalizado. ",
+      "titulo": "ONU desligada Retornou acesso.",
+      "etiquetas": [
+        "Equipamento desligado no botao POWER - FTTH"
+      ]
+    },
+    "/bloqueado": {
+      "texto": "Entrou em contato informando estar sem acesso, visto cliente bloqueado, informado sobre, cliente ciente. Transferido para o setor responsável verificar.",
+      "titulo": "Inadimplência Financeira",
+      "etiquetas": [
+        "Inadimplência Financeira"
+      ]
+    },
+    "/configuracao": {
+      "texto": "Cliente ao entrar em contato solicitou informações sobre configuração estruturada. Passada as seguintes informações: Valor R$ 90,00 Reais na próxima faturas, 20M de cabo RJ45 gratuito para configurar e conectar dispositivos na rede do cliente. Ciente, desistiu após saber da cobrança do serviço. Cliente após alguns minutos em linha desligou a ligação. ",
+      "titulo": "Configuração de rede Interna",
+      "etiquetas": [
+        "Configuração Estruturada de Rede Interna"
+      ]
+    }
+  }
+}

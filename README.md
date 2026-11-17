@@ -18,3 +18,5 @@ https://ianvictor.github.io/assistente-atendimento-producao/assistente.js
 ```
 https://ianvictor.github.io/assistente-atendimento-producao/revan.js
 ```
+
+`modelo.json`: exemplos que todo espaço novo recebe (gerado a partir do repositório privado; não edite aqui).
